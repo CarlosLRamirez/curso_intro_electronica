@@ -45,11 +45,11 @@ La arduino Uno es una placa de desarrollo basada en un microcontrolador Atmega32
 
 **Diagrama de pines**
 
-![](Arduino-UNO-pines.jpg)
+![](../images/Arduino-UNO-pines.jpg)
 
 **Diagrama de completo**
 
-![](arduino-Pinout.jpg)
+![](../images/arduino-Pinout.jpg)
 
 ----
 
@@ -57,7 +57,7 @@ La arduino Uno es una placa de desarrollo basada en un microcontrolador Atmega32
 
 ### El circuito eléctrico
 
-![](Circuito%20Electrico.png)
+![](../images/Circuito%20Electrico.png)
 
 ### Voltaje, Corriente y Resistencia
     
@@ -67,7 +67,7 @@ La arduino Uno es una placa de desarrollo basada en un microcontrolador Atmega32
 
 **Resistencia** es la tendencia de resistir el flujo de carga (corriente) de un materialLa resistencia se mide en Ohms (Ω)
 
-![](Volt%20Amp%20Ohm.jpg)
+![](../images/Volt%20Amp%20Ohm.jpg)
 
 ## La Ley de Ohm
 
@@ -83,7 +83,7 @@ Una señal Digital unicamente puede tener dos estados o dos valores, por ejemplo
 
 Una señal Analógica, puede tomar cualquier valor existente dentro de un rango determinado, por ejemplo son valores analógicos, la temperatura, el peso, la intensidad de la luz, la velocidad de un vehiculo, etc.
 
-![](analog%20vs%20digital.png)
+![](../images/analog%20vs%20digital.png)
 
 ## Uso del Protoboard
 
@@ -92,7 +92,7 @@ Una señal Analógica, puede tomar cualquier valor existente dentro de un rango 
 
 ## Codigo de colores de las Resistencias
 
-![](codigo%20colores.png)
+![](../images/codigo%20colores.png)
 
 ### Heramienta de simulacion de circuitos: TINKERCAD
 
@@ -100,7 +100,7 @@ Tinkercad [(www.tinkercad.com)](www.tinkercad.com) es una herramienta en linea q
 
 Tambien nos permite conectar y simular la programación de una placa Arduino UNO, como lo veremos mas adelante.
 
->Ejercicio 2-1
+>Ejercicio:
 >
 >Crear un pequeño circuito eléctrico, utilizando un LED, una resistencia de 220 ohm, y un boton pulsador en serie, utilizaremos la placa de Arduino UNO unicamente como fuente de energía.
 >
@@ -131,7 +131,7 @@ NOTA: *Se recomienda colocar el idioma en ingles, ya que las traducciones de los
 
 Este es el "Hola Mundo" en bloques, para encender y apagar de forma intermitente el LED integrado que viene incluido en la placa de Arduino UNO
 
-![bloques hola mundo led integrado](hola-mundo-led-integrado.png)
+![bloques hola mundo led integrado](../images/hola-mundo-led-integrado.png)
 
 Tinkercad tambien nos muestra el equivalente en código Arduino, el cual podemos guardar y cargar en nuestra placa real.
 
@@ -154,7 +154,7 @@ void loop()
 Aqui vemos el led integrado parpadeando o "blinkeando"
 
 
-![](hola%20mundo%20led%20integrado.gif)
+![](../images/hola%20mundo%20led%20integrado.gif)
 
 ## EJEMPLO 2-1: 
 
@@ -162,11 +162,11 @@ Parpadeo de un LED conectado a la pin 10, el cual lo podemos utilizar como una S
 
 ### Conexión del circuito
 
-![](hola-mundo-pin-10-circuito.png)
+![](../images/hola-mundo-pin-10-circuito.png)
 
 ### Programa (Bloques)
 
-![](hola-mundo-pin-10.png)
+![](../images/hola-mundo-pin-10.png)
 
 ### Programa (Codigo)
 
@@ -196,7 +196,7 @@ La instrucción `delay()` nos permite hacer una pausa en el programa para que po
 
 ### Resultado
 
-![](hola%20mundo%20pin10.gif)
+![](../images/hola%20mundo%20pin10.gif)
 
 
 ### RETO No. 1
@@ -211,8 +211,61 @@ Crear el circuito y programa para hacer un semaforo, debe de permanecer en verde
 ### RETO No. 4
 Con varios LEDS, crear el efecto "Kit El Auto fantastico"
 
-![](efecto%20kit.gif)
+![](../images/efecto%20kit.gif)
 
 # Arduino: Entradas Digitales
 
--- en contruccion --
+En esta sección, veremos como utilizar un boton pulsador como entrada digital para encender y apagerun LED.
+
+Al presionar un boton pulsador el LED se debe encender, y al presionar el otro boton pulsador el LED se debe apagar.
+
+## Conexión
+
+![](../images/arduino-boton-led.png)
+
+## Codigo
+
+```cpp
+/*
+Adafruit Arduino - Lesson 6. Inputs
+*/
+
+int ledPin = 5;
+int buttonApin = 9;
+int buttonBpin = 8;
+
+byte leds = 0;
+
+void setup() 
+{
+  pinMode(ledPin, OUTPUT);
+  pinMode(buttonApin, INPUT_PULLUP);  
+  pinMode(buttonBpin, INPUT_PULLUP);  
+}
+
+void loop() 
+{
+  if (digitalRead(buttonApin) == LOW)
+  {
+    digitalWrite(ledPin, HIGH);
+  }
+  if (digitalRead(buttonBpin) == LOW)
+  {
+    digitalWrite(ledPin, LOW);
+  }
+}
+```
+
+La primera parte del sketch define tres variables para los tres pins que se va a utilizar. El 'ledPin' es un pin de salida y el 'buttonApin" se refiere al pulsador de la parte de arriba del protoboard y el 'buttonBpin' se refiere al otro pulsador.
+
+La función 'setup' define el ledPin como una SALIDA, pero ahora tenemos dos entradas que manejar. En este caso, utilizamos el pinMode como 'INPUT_PULLUP' según se muestra aqui:
+
+```cpp
+pinMode(buttonApin, INPUT_PULLUP);  
+pinMode(buttonBpin, INPUT_PULLUP);
+```
+El modo de pin INPUT_PULLUP significa que el pin será utilizado como entrada, pero que si ningun otra cosa esta conectada a la entrada, esta deberia estar "tirada hacia arriba" (pulled-up) a HIGH (+5V). En otras palabras, el valor por defecto de la entrada es HIGH, mientras no sea "tirada hacia abajo" (pulled LOW) por la accion de presionar el boton.
+
+Esta es la razón por la que los pulsadores estan conectados a GND. Cuando el pulsador es presionado, este conecta la entrada del pin a GND, por lo que cambia desde HIGH a LOW.
+
+Debido a que la entrada es normalmente HIGH, y unicamente se cambia a LOW cuando el boton esta presionado, la logica esta un poco alreves. Esto se maneja en la funcion "loop".
