@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Resistencias y la Ley de Ohm"
-date:   2019-11-24 22:02:22 -0600
+date:   2019-11-24 11:02:22 -0600
 permalink: /resistencia-ley-ohm/
 categories: apuntes_curso
 mathjax: true

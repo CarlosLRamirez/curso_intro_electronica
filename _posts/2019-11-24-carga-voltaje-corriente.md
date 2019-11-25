@@ -4,7 +4,7 @@
 
 layout: post
 title: "Carga, Voltaje y Corriente"
-date:   2019-11-24 22:02:22 -0600
+date:   2019-11-24 10:02:22 -0600
 permalink: /carga-voltaje-corriente/
 categories: apuntes_curso
 mathjax : true
