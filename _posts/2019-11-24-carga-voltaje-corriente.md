@@ -13,7 +13,7 @@ categories: apuntes_curso
 
 El más sencillo de los atomos es el de hidrógeno, formado por dos partículas básicas, el **protón** y el **electrón**. 
 
-![atomos de hidrógeno y de hélio](../images/atomos_hidrogeno_helio.png)
+![atomos de hidrógeno y de hélio](./images/atomos_hidrogeno_helio.png)
 
 El *protón* se encuentra en el **núcleo** del atómo y posee una carga positiva, el **electrón** rodea al nucleo en una orbita, y transporta una carga negatíva de la misma magnitud que  la carga del *protón*. 
  
