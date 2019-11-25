@@ -4,3 +4,8 @@
 
 layout: home
 ---
+
+# Apuntes del curso: Introducción a la Electrónica
+
+[Some Link]({% post_url 2019-11-24-carga-voltaje-corriente %})
+
