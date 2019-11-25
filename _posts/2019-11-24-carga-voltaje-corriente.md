@@ -10,15 +10,13 @@ categories: apuntes_curso
 mathjax: true
 ---
 
-## La Carga Eléctrica, el Voltaje y la Corriente
-
-## La Carga eléctrica
+# La Carga eléctrica
 
 > En la física moderna, la carga eléctrica es una propiedad intrínseca de la materia responsable de producir las interacciones electrostáticas.
 
 En la actualidad no se sabe qué es o por qué se origina dicha carga, lo que si se conoce es que la **materia ordinaria se compone de átomos**, para poder comprender que es la carga eléctrica, debemos estudiar como se componen dichos átomos.
 
-### El atomo y su estructura
+## El atomo y su estructura
 
 El más sencillo de los atomos es el de hidrógeno, formado por dos partículas básicas, el **protón** y el **electrón**. 
 
@@ -60,27 +58,49 @@ Como se puede notar de la anterior formula, mientras mas grande es la distancia 
 
 Otros metales que tienen las mismas propiedades que el cobre, pero en diferente grado son, la plata, el oro y el aluminio, asi como algunos metales raros como el tungsteno.
 
+# El Voltaje
 
----
+Al separar el electrón #29 del resto de la estructura del átomo, podemos ver que se forma una región con una carga neta positiva (el atomo con un proton extra) y una región negativa (el electron libre separado del atomo padre).
+
+A la región positiva le llamamos **ión positivo**. Un *ion positivo* es un átomo que esta cargado positivamente, ya que tiene mas protones que electrónes en su estructura.
+
+Esta separación de cargas para crear regiones positivas y negativas, es lo que precisamente ocurre en una bateria. A travéz de una reacción quimica, un alta concentración de cargas positivas (iones positivos) es establecida en una terminal de la bateria, y la misma cantidad de carga negativa se establece en la terminal negativa de la batería.
+
+> Cualquier fuente de voltaje se establece simplemente creando una separación de cargas positivas y negativas
+
+![](../images/definicion_ion_positivo.png)
+
+En la sección anterior se introdujo el **coulomb**, el cual nos sirve para medir la cantidad de carga, ya sea positiva o negativa. Esta definido que 1 \\(coulomb (C)\\) de carga, es igual a la carga que producen \\(6.42\times10^{18}\\) electrones.
+
+O dicho de otra forma, un electrón posee una carga de \\(6.24\times10^{-19}\\) coulombs.
+
+Si tomamos una carga negativa de un **coulomb** cercano a la superficie de una carga positiva y lo movemos hacia una carga negativa, se debe de gastar energía para poder contrarestar las fuerzas de repulsíon de la carga negativa mas grande, así como las fuerzas de atracción de la carga positiva. De acuerdo con la siguiente figura, en este proceso de mover la carga de *a* a *b*:
+
+> Si un total de **1 joule** (J) de energía es utilizado para mover una carga negativa de **1 coulomb** (C), se dice que existe una diferencia de **1 volt** (V) entre los dos puntos.
+> 
+
+Lo cual se expresa en la siguiente ecuación:
+
+<div class="math">
+\begin{equation}
+    V=\frac{W}{Q}  
+\end{equation} 
+</div>
+
+donde, V = volts(V), W = joules (J), Q = coulombs (C).
+
+![](../images/definicion_voltaje.png)
 
 
-La carga de un proton (y de un electrón) se dice que es de:  \\(6.24 x 10^-19\\) coulombs.
+A la diferencia de voltaje entre dos puntos, tambien se le conoce como **diferencia de potencial.**
 
-O dicho de otra forma1 coulomb = 6.25
+## La Corriente
 
+Generalmente se confunden los terminos corriente y voltaje, o se usan de forma intercambiada, debemos recordar que:
 
-<!--- This is an HTML comment in Markdown 
+> El voltaje aplicado es el mecanismo inicial - la corriente es la reacción a ese voltaje aplicado
+> 
 
-- la masa del electrón es mucho mas pequeña que la del proton y neutron
-- carga puntual:
-- cargas diferentes de atraen, cargas iguales se repelen
-- e:carga del proton, -e:carga del electrón, n=0
-- 
+En un pedazo de cable, si cortamos el cable en un plano imaginario perpendicular, produciendo una sección circular, ségún se muestra en la figura, existen tanto electrones libres que cruzan dicho plano en ambas direcciones. Sin embargo en cualquier instante de tiempo, la misma cantidad de electrones que cruzan en una dirección, la cruzan en la dirección opuesta, por lo que el flujo de electrones es cero.
 
-
-
--->
-
-
-This expression: $\vec{F} = \frac{d \vec{p}}{dt} = m \frac{d \vec{v}}{dt} = m \vec{a}$
-
+![](../images/corriente_plano_cable.png)
