@@ -54,14 +54,13 @@ Para dos cargas de polaridades similares y diferentes, la distribución del fluj
 
 Observe el siguente diagrama, dos placas paralelas de algun material como el aluminio se han conectado a traves de un interruptor y un resistor a una bateria. Si las placas paralelas estan inicialmente descargadas y el interruptor se deja abierto, no existe ninguna carga negativa o positiva en ninguna placa. 
 
-Sin embargo, en el momento en que se cierra el interruptor, la placa superior atrae electrones a través del resistor hacia la terminal positiva de la bateria. Al principio habrá un exeso de corriente, limitado en su magnitud por la resistencia presente. Luego el flujuo disminuira como podremos comprobar despues. Esta acción crea una carga positiva en la carga superior. La terminal negativa repele los electrones que pasan del conductor inferior hacia la placa inferior a la misma velocidad con que los atrae la terminal positiva. Esta transferencia de electrones prosigue hasta que la diferencia de voltaje a través de las placas paralelas es exactamente igual al voltaje de la batería. El resultado final es una carga nega positiva en la placa superior y una carga neta negativa en la placa inferior, muy similar en muchos aspectos a de las dos caras aisladas de la figura anterior.
+Sin embargo, en el momento en que se cierra el interruptor, la placa superior atrae electrones a través del resistor hacia la terminal positiva de la bateria. Al principio habrá un exceso de corriente, limitado en su magnitud por la resistencia presente. Luego el flujo disminuira como podremos comprobar despues. Esta acción crea una carga positiva en la carga superior. La terminal negativa repele los electrones que pasan del conductor inferior hacia la placa inferior a la misma velocidad con que los atrae la terminal positiva. Esta transferencia de electrones prosigue hasta que la diferencia de voltaje a través de las placas paralelas es exactamente igual al voltaje de la batería. El resultado final es una carga neta positiva en la placa superior y una carga neta negativa en la placa inferior, muy similar en muchos aspectos a de las dos cargas aisladas de la figura anterior.
 
 ![](../images/capacitancia.png)
 
-Este elemento, conceptualizado por dos placas paralelas separadas por un material aistlante (en este caso el aire) se denomina ***capacitor***. *La capacitancia* es una medida de la capacidad de un capacitor para almacenar cargas en sus placas; en otras palabras, su capacidad de almacenamiento.
+Este elemento, conceptualizado por dos placas paralelas separadas por un material aislante (en este caso el aire) se denomina ***capacitor***. *La capacitancia* es una medida de la capacidad de un capacitor para almacenar cargas en sus placas; en otras palabras, su capacidad de almacenamiento.
 
 > Un capacitor tiene una capacitancia de un *farad* si se deposita 1 coulomb de carga en las placas mediante una diferencia de voltaje de 1 volt a través de las placas.
-
 
 <div class="math">
 \begin{equation}
@@ -71,6 +70,6 @@ Este elemento, conceptualizado por dos placas paralelas separadas por un materia
 
 C = farads (F), Q = coulombs (C), V = volts (V)
 
-
+> Mientras mas grande la capacitancia de un capacitor, mayor la cantidad de carga almacenada entre sus placas, para el mismo voltaje aplicado.
 
 
