@@ -111,3 +111,68 @@ La cuarta banda indica la tolerancia del fabricante, lo cual indica que tan prec
 Valores comerciales de los resistores
 
 ![](../images/valores-comerciales-resistencias.png)
+
+## Ohmetros
+
+El ohmetro se utiliza para medir la resistencia en los siguientes casos
+
+1. Medir la resistencia de elementos individuales o combinados
+2. Detectar circuitos abierts (alta resistencia) o corto-circuitos (baja resistencia)
+3. Verificar la continuidad de conexiones e identificar pares en cables multipar.
+4. Probar algunos elementos semiconductores.
+
+![](../images/measuring-resistance.png)
+
+![](../images/checking-continuiti.png)
+
+![](../images/identifing-cables.png)
+
+> Nunca intente medir la resistencia en un circuito energizado
+
+> Nunca guarde un multimetro en modo de ohmetro
+
+# La Ley de Ohm
+
+En todo sistema físico tenemos:
+
+<div class="math">
+\begin{equation}
+    Efecto=\frac{Causa}{Oposicion}  
+\end{equation} 
+</div>
+
+Como vimos anteriormente, en electricidad, el efecto que queremos establecer el el *flujo de cargas,* es decir, la *corriente*. La *diferencia de potencial*, o voltaje entre dos puntos es la *causa* ("presión"), y la oposición es la *resistencia* encontrada. Al sustitiur estos terminos en la ecuación anterior obtenemos
+
+<div class="math">
+\begin{equation}
+    Corriente=\frac{diferencia de potencial}{resistencia}  
+\end{equation} 
+</div>
+o
+<div class="math">
+\begin{equation}
+    I=\frac{E}{R}  
+\end{equation} 
+</div>
+
+A la ultima ecuación se le conoce como **Ley de Ohm** y es una de las leyes mas importantes de la electricidad y la electrónica.
+
+Con algunas manipulaciones matemáticas, obtenemos
+
+<div class="math">
+\begin{equation}
+    E={I}{R}  
+\end{equation} 
+</div>
+
+<div class="math">
+\begin{equation}
+    R=\frac{E}{R}  
+\end{equation} 
+</div>
+
+![](../images/basic-circuit.png)
+
+Para cualquier resistor, en cualquier red, la dirección de la corriente a travéz del resistor define la polaridad de la caida de voltaje a travez del resistor.
+
+![](../images/definiendo-plaridad.png)
