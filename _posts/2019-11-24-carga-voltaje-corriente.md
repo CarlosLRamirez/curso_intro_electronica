@@ -74,6 +74,12 @@ En la sección anterior se introdujo el **coulomb**, el cual nos sirve para medi
 
 O dicho de otra forma, un electrón posee una carga de \\(6.24\times10^{-19}\\) coulombs.
 
+> 1 \\(coulomb (C)\\) = \\(6.42\times10^{18} e\\)
+> 
+> donde \\(e\\) = carga puntual
+
+
+
 Si tomamos una carga negativa de un **coulomb** cercano a la superficie de una carga positiva y lo movemos hacia una carga negativa, se debe de gastar energía para poder contrarestar las fuerzas de repulsíon de la carga negativa mas grande, así como las fuerzas de atracción de la carga positiva. De acuerdo con la siguiente figura, en este proceso de mover la carga de *a* a *b*:
 
 > Si un total de **1 joule** (J) de energía es utilizado para mover una carga negativa de **1 coulomb** (C), se dice que existe una diferencia de **1 volt** (V) entre los dos puntos.
@@ -81,13 +87,30 @@ Si tomamos una carga negativa de un **coulomb** cercano a la superficie de una c
 
 Lo cual se expresa en la siguiente ecuación:
 
-<div class="math">
-\begin{equation}
-    V=\frac{W}{Q}  
-\end{equation} 
-</div>
+> <div class="math">
+> \begin{equation}
+>     V=\frac{W}{Q}  
+> \end{equation} 
+> </div>
+> donde, V = volts(V), W = joules (J), Q = coulombs (C).
 
-donde, V = volts(V), W = joules (J), Q = coulombs (C).
+A traves de manipulaciones algebráicas obtenemos:
+
+> <div class="math">
+> \begin{equation}
+>     W={Q}{V}  
+> \end{equation} 
+> </div>
+> (joules ,J)
+y
+> <div class="math">
+> \begin{equation}
+>     Q=\frac{W}{V}  
+> \end{equation} 
+> </div>
+> (coulombs,C)
+
+
 
 ![](../images/definicion_voltaje.png)
 
@@ -104,3 +127,73 @@ Generalmente se confunden los terminos corriente y voltaje, o se usan de forma i
 En un pedazo de cable, si cortamos el cable en un plano imaginario perpendicular, produciendo una sección circular, ségún se muestra en la figura, existen tanto electrones libres que cruzan dicho plano en ambas direcciones. Sin embargo en cualquier instante de tiempo, la misma cantidad de electrones que cruzan en una dirección, la cruzan en la dirección opuesta, por lo que el flujo de electrones es cero.
 
 ![](../images/corriente_plano_cable.png)
+
+Para que los electrónes fluyan en una misma dirección debemos aplicar un voltaje a travezdel cable para forzar a los electrones a moverse hacia la terminal negativa de la bateria, como se puede ver en la figura.
+
+![](../images/movimiento_electrones.png)
+
+En el instante que el cable se colocaentre las terminales de la batería, los electrónes libres se mueven inmediatamente hacia la terminal positiva, mientras estos electrones se mueven, la bateria actua como una fuente constante de electrones para mantener la carga fluyendo.
+
+Para llevar el proceso un paso mas, considere la siguiente figura, donde un cable de cobre a sido utilizado para conectar una bombilla con una bateria. En el instante que la conexíon es realizada, los electrones libres con carga negativa fluyen hacia la terminal positiva, mientras que los iones positivos en la terminal positiva, simplemente oscilan en una posición fija promedio. El flujo de cargas (los electrones) a traves de la bombilla, calienta el filamento por motivo de la fricción, al punto que este brilla al rojo-vivo, produciendo la luz. En total, por lo tanto, un voltaje aplicado establecio un flujo de electrónes en una misma dirección, lo que conocemos como corriente eléctrica.
+
+> Si  \\(6.242\times10^{18}\\) electrones (1 coulomb), pasan a travéz del plano imaginario de la figura en 1 segundo, el flujo de carga, la corriente, se dice que es de 1 ampere (A)
+
+![](../images/circuito-basico.png)
+
+La unidad para medir la corriente es el **amperio**. Utilizando el coulomb como unidad de carga, la corriente en amperios puede determinarse con la siguiente ecuación:
+
+> <div class="math">
+> \begin{equation}
+>     I=\frac{Q}{t}  
+> \end{equation} 
+> </div>
+> 
+> donde, I = amperios(A), Q = coulombs (C), t = tiempo (s).
+> 
+
+La letra *I* se escogio por la palabra usada en frances "intensité".
+
+Mediante manipulaciónes algebraicas tenemos:
+
+> <div class="math">
+> \begin{equation}
+>     Q={I}{t}  
+> \end{equation} 
+> </div>
+> (coulombs, C)
+y
+> <div class="math">
+> \begin{equation}
+>     t=\frac{Q}{I}  
+> \end{equation} 
+> </div>
+> (segundos, s)
+
+
+En resumen por lo tanto:
+
+> **El voltaje aplicado (diferencia de potencial) en un sistema eléctrico/electrónico es la presión para poner en acción al sistema, y la corriente es la reacción a dicha presion.**
+
+### Fuentes de voltaje
+
+El termino **dc** es la abreviación de *"corriente directa"*, lo que significa que la corriente fluje en una sola dirección.
+
+La siguiente gráfica muestra el simbolo utilizado para las fuentes de voltaje de dc. Observe que la longitud de las barras en cada extremo define la polaridad de la fuente. La barra mas larga representa el lado positivo, y la barra corta el lado negativo. Generalmente se utiliza la letra E para denotar una *fuente de voltaje*. Viene del echo que:
+
+> Una fuerza electromotriz (emf) es una fuerza que establece un flujo de carga (o corriente) en un sistema debido a la aplicación de una diferencia de potencial.
+
+![](../images/simbolo_fuente_dc.png)
+
+
+## Uso del Amperimetro y del Voltimetro
+
+Es importante poder medir los niveles de corriente y voltaje en un sistema eléctrico en funcionamiento. Como su nombre lo indica los Amperimetros son utilizados para medir niveles de corriente, mientras los Voltimetros son utilizados para medir la diferencia de potencial entre dos puntos.
+
+La diferencia de potencias puede medirse entre dos puntos simplemente conoctando los cables del medidor a través de los dos puntos. La punta positiva se debe de conectar al punto con mayor nivel de potencial, mientras la otro extremo, al punto con menor nivel de potencial, para obtener una medición positiva. La conexión a la inversa nos daria una medición negativa (menor a cero).
+
+Debido a que los Amperimetros miden la taza del flujo de cargas, el medidor debe ser colocado en la red por la cual la carga fluye. La unica forma de hacer esto es abriendo el camino por medio del cual la corriente va ser medida y colocando el medidor entre estos sos puntos. Por lo tanto se debe desconectar el circuito. Como lo muestra la figura.
+
+![](../images/uso_del_multimetro.png)
+
+Existen instrumentos para medir solo voltaje o solo corriente, sin embargo hoy en dia lo mas común es utilizar un instrumento que mide ambos valores, ademas de resistencia y otros parametros, llamado ***Multimetro Digital***
+
