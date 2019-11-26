@@ -85,6 +85,10 @@ Los resistores variables, como su nombre lo implica, tienen una resistencia que 
 
 ![](../images/simbolo-potenciometro.png)
 
+![](../images/potenciometro.png)
+
+![](../images/potenciometro-tornillo.png)
+
 La resistencia entre las terminales exteriore a y c de la figura es siempre fija, al valor maximo del potenciometro, independiente de la posición del brazo.
 
 La resistencia entre el brazo y cualquier terminal exterior puede variar desde un minimo 0 hasta el valor maximo del potenciometro.
