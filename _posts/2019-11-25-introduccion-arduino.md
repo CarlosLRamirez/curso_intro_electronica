@@ -51,67 +51,6 @@ La arduino Uno es una placa de desarrollo basada en un microcontrolador Atmega32
 
 ![](../images/arduino-Pinout.jpg)
 
-----
-
-# Conceptos básicos de electrónica 
-
-## El circuito eléctrico
-
-![](../images/Circuito%20Electrico.png)
-
-## Voltaje, Corriente y Resistencia
-    
-**Voltaje** se define como la cantidad de energía potencial entre dos puntos de un circuito. Uno punto tiene más carga que otro. La diferencia de carga entre los puntos se llama voltaje. El voltaje de mide en Voltios (V).
-
-**Corriente** es la tasa con la que fluye la carga. La corriente electrica se mide en Amperios (A).
-
-**Resistencia** es la tendencia de resistir el flujo de carga (corriente) de un materialLa resistencia se mide en Ohms (Ω)
-
-![](../images/Volt%20Amp%20Ohm.jpg)
-
-## La Ley de Ohm
-
-El voltaje, la corriente y la resistencia estan relacionadas mediante la ley de Ohm
-
-![](https://www.electronics-tutorials.ws/wp-content/uploads/2018/05/dccircuits-dcp23.gif)
-
-V= voltaje, I= corriente, R= resistencia
-
-## Señal Digital Vs. Señal Analógica
-
-Una señal Digital unicamente puede tener dos estados o dos valores, por ejemplo estos estados pueden ser "Encendido" o "Apagado", "Abierto" o  "Cerrado", "ON" o "OFF", "Verdadero" o "Falso", generalmente los representamos con los digitos 1 y 0, los cuales llamamos *bits*.
-
-Una señal Analógica, puede tomar cualquier valor existente dentro de un rango determinado, por ejemplo son valores analógicos, la temperatura, el peso, la intensidad de la luz, la velocidad de un vehiculo, etc.
-
-![](../images/analog%20vs%20digital.png)
-
-## Uso del Protoboard
-
-![](http://1.bp.blogspot.com/_aiR9rtM3pn4/S7-7-00AqzI/AAAAAAAAAE0/KsKB3jdUKZ0/s1600/protoboard.bmp)
-
-
-## Codigo de colores de las Resistencias
-
-![](../images/codigo%20col``ores.png)
-
----
-
-# Introducción a Tinkercad
-
-Tinkercad [(www.tinkercad.com)](www.tinkercad.com) es una herramienta en linea que nos permite la simulación de circuitos mediante la conexión de componentes electronicos virtuales,como protoboard, resistencia, leds, pulsadores, etc.
-
-Tambien nos permite conectar y simular la programación de una placa Arduino UNO, como lo veremos mas adelante.
-
-> **ACTIVIDAD**:
-> 
-> Crear un pequeño circuito eléctrico, utilizando un LED, una resistencia de 220 ohm, y un boton pulsador en serie, utilizaremos la placa de Arduino UNO unicamente como fuente de energía.
-> 
-> Calcular la corriente que pasa por el circuito, y luego medirla con un amperimetro y comparar ambos valores.
-> 
-> Simularlo en Tinkercad, y luego crearlo con componentes reales.
-> 
-
----
 # Programación de Arduino
 
 ##  Preparación
@@ -125,11 +64,13 @@ Tambien nos permite conectar y simular la programación de una placa Arduino UNO
 
 En esta sesión vamos a aprender a crear el circuito y programa básico de Arduino. El "Hola Mundo" de la electrónica, el cual consiste en encender y apagar el LED integrado que trae la placa Arduino.
 
-### Conexión
+### EJEMPLO 1
+
+#### Conexión
 
 En este caso no necesitamos conexión ya que el LED que vamos a encender y apagar viene integrado en la placa Arduino, y conrresponde con el pin 13.
 
-### Simulación en  Tinkercad
+#### Simulación en  Tinkercad
 
 Tinkercad nos permite simular la conexión del Arduino, y crear "programas" mediante la union bloques, lo cual es de mucha ayuda si usted no tiene experiencia en programación, ya que nos permite comprender de mejor manera la "logica" de un programa.
 
@@ -139,44 +80,47 @@ Este es el "Hola Mundo" en bloques, para encender y apagar de forma intermitente
 
 ![bloques hola mundo led integrado](../images/hola-mundo-led-integrado.png)
 
-### Codigo
+#### Codigo
 
 Este sería el equivalente en código Arduino, el cual podemos guardar y cargar en nuestra placa real,
 
 ```cpp
 void setup()
 {
-  pinMode(13, OUTPUT);
+  pinMode(13, OUTPUT); //definimos el pin 13 como salida, en este pin se encuentra el LED_INTEGRADO
 }
 
 void loop()
 {
-  digitalWrite(13, HIGH);
-  delay(1000); // Wait for 1000 millisecond(s)
-  digitalWrite(13, LOW);
-  delay(1000); // Wait for 1000 millisecond(s)
+  digitalWrite(13, HIGH); //encendemos el LED INTEGRADO
+  delay(1000); // esperamos 1000 millisecond(s)
+  digitalWrite(13, LOW); //apagamos el LED INTEGRADO
+  delay(1000); // esperamos 1000 millisecond(s)
 }
 ```
 
-### Resultado
+#### Resultado
 
-Aqui vemos el led integrado parpadeando o "blinkeando"
+Aqui vemos el led integrado parpadeando
 
 ![](../images/hola%20mundo%20led%20integrado.gif)
 
-## EJEMPLO 2-1: 
+### EJEMPLO 2: 
 
-Parpadeo de un LED conectado a la pin 10, el cual lo podemos utilizar como una SALIDA DIGITAL.
+Ahora vamos a modificar el ejemplo anterior, pero vamos a cambiar el LED hacia el pin 10. Para esto debemos de cablearlo utilizando el protoboard y una resistencia de al menos 220ohm.
 
-### Conexión del circuito
+> **RECUERDE, SIEMPRE UTILIZAR UNA RESISTENCIA CUANDO CONECTE UN LED A UNA SALIDA DE ARDUINO, EL NO HACERLO PUEDE DAÑAR LA PLACA ARDUINO Y EL LED.**
+
+
+#### Conexión
 
 ![](../images/hola-mundo-pin-10-circuito.png)
 
-### Programa (Bloques)
+#### Programa (Bloques)
 
 ![](../images/hola-mundo-pin-10.png)
 
-### Programa (Codigo)
+#### Programa (Codigo)
 
 ```c++
 //Ejemplo salidas digitales -  Hola Mundo
@@ -184,8 +128,7 @@ Parpadeo de un LED conectado a la pin 10, el cual lo podemos utilizar como una S
 // La rutina setup se ejecuta cuando encendemos el Arduino, 
 // o presionamos el boton de reset:
 void setup() {
-  // inicializa el pin 10 como SALIDA (OUTPUT)
-  pinMode(10, OUTPUT);
+  pinMode(10, OUTPUT); // inicializa el pin 10 como SALIDA (OUTPUT)
 }
 
 //La rutina loop se ejecuta una y otra vez, de forma infinita:
@@ -202,7 +145,7 @@ Como podemos ver en el codigo, la instrucción para "encender" o "apagar " una s
 
 La instrucción `delay()` nos permite hacer una pausa en el programa para que podamos notar el encendido y apagado del LED, en este caso es de 1000 milisegundos que es igual a 1 segundo.
 
-### Resultado
+#### Resultado
 
 ![](../images/hola%20mundo%20pin10.gif)
 
@@ -221,93 +164,89 @@ Con varios LEDS, crear el efecto "Kit El Auto fantastico"
 
 ![](../images/efecto%20kit.gif)
 
-# Arduino: Entradas Digitales
+---
 
-En esta sección, veremos como utilizar un boton pulsador como entrada digital para encender y apagerun LED.
+## Uso Entradas Digitales
 
-Al presionar un boton pulsador el LED se debe encender, y al presionar el otro boton pulsador el LED se debe apagar.
+### Ejemplo # 1
 
-## Conexión
+En esta sección, veremos como utilizar un boton pulsador como entrada digital para encender un LED, mientras este se mantenga presionado.
 
-![](../images/arduino-boton-led.png)
+### Conexión
 
-## Codigo
+![](../images/arduino_boton_led.png)
 
-```cpp
-/*
-Adafruit Arduino - Lesson 6. Inputs
-*/
-
-int ledPin = 5;
-int buttonApin = 9;
-int buttonBpin = 8;
-
-byte leds = 0;
-
-void setup() 
-{
-  pinMode(ledPin, OUTPUT);
-  pinMode(buttonApin, INPUT_PULLUP);  
-  pinMode(buttonBpin, INPUT_PULLUP);  
-}
-
-void loop() 
-{
-  if (digitalRead(buttonApin) == LOW)
-  {
-    digitalWrite(ledPin, HIGH);
-  }
-  if (digitalRead(buttonBpin) == LOW)
-  {
-    digitalWrite(ledPin, LOW);
-  }
-}
-```
-
-La primera parte del sketch define tres variables para los tres pins que se va a utilizar. El 'ledPin' es un pin de salida y el 'buttonApin" se refiere al pulsador de la parte de arriba del protoboard y el 'buttonBpin' se refiere al otro pulsador.
-
-La función 'setup' define el ledPin como una SALIDA, pero ahora tenemos dos entradas que manejar. En este caso, utilizamos el pinMode como 'INPUT_PULLUP' según se muestra aqui:
+### Codigo
 
 ```cpp
-pinMode(buttonApin, INPUT_PULLUP);  
-pinMode(buttonBpin, INPUT_PULLUP);
-```
-El modo de pin INPUT_PULLUP significa que el pin será utilizado como entrada, pero que si ningun otra cosa esta conectada a la entrada, esta deberia estar "tirada hacia arriba" (pulled-up) a HIGH (+5V). En otras palabras, el valor por defecto de la entrada es HIGH, mientras no sea "tirada hacia abajo" (pulled LOW) por la accion de presionar el boton.
 
-Esta es la razón por la que los pulsadores estan conectados a GND. Cuando el pulsador es presionado, este conecta la entrada del pin a GND, por lo que cambia desde HIGH a LOW.
-
-Debido a que la entrada es normalmente HIGH, y unicamente se cambia a LOW cuando el boton esta presionado, la logica esta un poco alreves. Esto se maneja en la funcion "loop".
-
-
-> ### ACTIVIDAD 1:
-> 
-> Hacer un circuito que al presionar un boton, cambie el estado de un led, es decir, si el led esta encendido que lo apague, y si esta apagado que lo encienda:
-
-
-#### CODIGO SOLUCION
-
-```cpp
-boolean led_activo = false;
+int pinBoton=9;
+int pinLed=5;
 
 void setup()
 {
-  pinMode(9, INPUT_PULLUP);
-  pinMode(5, OUTPUT);
-  pinMode(6, OUTPUT);
-  digitalWrite (5, LOW);
-  led_activo=false;
-  
-  
-  
+  pinMode(pinBoton, INPUT_PULLUP); //pin conectado al boton
+  pinMode(pinLed, OUTPUT); //led
+
 }
 
 void loop()
 {
-  if (digitalRead(9) == LOW)
+  if (digitalRead(pinBoton) == LOW) //si se presiono el boton
   {
-    if (led_activo)
+     digitalWrite(pinLed,HIGH); //enciende el led
+     delay(50); //delay para evitar rebotes con el boton
+  
+  }else
+  {
+    digitalWrite(pinLed,LOW);    
+  }
+}
+```
+
+La primera parte del sketch define dos variables para los dos pines que se va a utilizar. El 'pinLed' es un pin de salida y el 'pinBoton" se refiere al pulsador.
+
+La función 'setup' define el pinBoton como una SALIDA, pero ahora tenemos una entradas que manejar. En este caso, utilizamos el pinMode como 'INPUT_PULLUP' según se muestra aqui:
+
+```cpp
+pinMode(pinBoton, INPUT_PULLUP); //pin conectado al boton
+```
+El modo de pin INPUT_PULLUP significa que el pin será utilizado como entrada, pero ademas le indica al Arduino que conecte internamente el pin con una resistencia de "pull-up", es decir que si no hay nada conectado a la entrada, este se conectara a VCC, por lo que recibirá un estado HIGH. cuando se presione el boton, el Arduino recibirá un estado LOW.
+
+![](../images/internal-pull-up.png)
+
+Esto lo debemo hacer cada vez que conectemos un boton a GND.
+
+Debido a que la entrada es normalmente HIGH, y unicamente se cambia a LOW cuando el boton esta presionado, la logica que manejaremos en el boton sera "alreves".
+
+### Ejemplo # 2:
+
+Vamos a modificar el programa anterior para que al presionar el boton, el LED cambie de  estado, es decir, si el LED esta encendido que se apague, y si el LEDesta apagado que se encienda
+
+### Conexión
+
+La conexión es la misma que el ejemplo anterior
+
+### Código
+
+```cpp
+boolean led_activo = false; //variable que nos servira para registra el estado del LED
+
+void setup()
+{
+  pinMode(9, INPUT_PULLUP); //pin conectado al boton
+  pinMode(5, OUTPUT); // pin conectado al LED
+  digitalWrite (5, LOW); //inicializamos el LED en estado apagado
+  led_activo=false; //iniciamos la variable de control el false, porque el led se inicia apagado
+}
+
+void loop()
+{
+  if (digitalRead(9) == LOW) //si se ha presionado el boton, entonces:
+  {
+    if (led_activo) //verificamos si el led esta encendido, mediante la variable de control
     {
-      digitalWrite(5, LOW);
+      digitalWrite(5, LOW); //
       led_activo = false;
    
     }else
@@ -319,5 +258,64 @@ void loop()
   }
  
   delay(10);
+}
+```
+
+## Uso de Salidas Analógicas
+
+PENDIENTE ACTUALIZAR
+
+## Uso de Entradas Analógicas
+
+PENDIENTE ACTUALIZAR
+
+
+## Ejercicio indicador de volumen
+
+
+
+```cpp
+// the setup routine runs once when you press reset:
+void setup() {
+  // initialize serial communication at 9600 bits per second:
+  Serial.begin(9600);
+   pinMode(10,OUTPUT); //pin con salida PWM para controlar brillo de LED
+    pinMode(5,OUTPUT); 
+    pinMode(6,OUTPUT); 
+    pinMode(7,OUTPUT); 
+}
+
+// the loop routine runs over and over again forever:
+void loop() {
+  // read the input on analog pin 0:
+  int sensorValue = analogRead(A0);
+  // print out the value you read:
+  Serial.println(sensorValue);
+  sensorValue=(sensorValue+1)/4; // cambio de escala de 0 a 255
+  analogWrite(10,sensorValue);
+
+  if (sensorValue<=60) {
+    digitalWrite(5,LOW);
+    digitalWrite(6,LOW);
+    digitalWrite(7,LOW);
+   }else{
+      if (sensorValue<=120){
+        digitalWrite(5,HIGH);
+        digitalWrite(6,LOW);
+        digitalWrite(7,LOW);
+       }else{
+          if (sensorValue<=180){
+              digitalWrite(5,HIGH);
+              digitalWrite(6,HIGH);
+              digitalWrite(7,LOW);
+           }else{
+              digitalWrite(5,HIGH);
+              digitalWrite(6,HIGH);
+              digitalWrite(7,HIGH);
+           }
+       }
+    }
+ 
+  delay(10);        // delay in between reads for stability
 }
 ```
