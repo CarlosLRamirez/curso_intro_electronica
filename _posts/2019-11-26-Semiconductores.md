@@ -94,6 +94,8 @@ Los electrones libres mostrados en la Figura 2-9 fluyen hacia el extremo izquier
 ![](../images/semiconductor%20N.png)
 
 
+!!! EN CONSTRUCCION !!!
+
 #p-Type Semiconductor
 Silicon that has been doped with a trivalent impurity is called a p-type semiconductor,
 where the p stands for positive. Figure 2-10 shows a p-type semiconductor.

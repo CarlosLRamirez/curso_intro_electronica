@@ -7,7 +7,8 @@ categories: apuntes_curso
 mathjax: true
 ---
 
-Vamos a guiarnos con el sugiente documento: <a href="http://mdgomez.webs.uvigo.es/DEI/Guias/tema5.pdf" target="_blank">http://mdgomez.webs.uvigo.es/DEI/Guias/tema5.pdf</a>
+Vamos a guiarnos con el siguiente documento: 
+<a href="http://mdgomez.webs.uvigo.es/DEI/Guias/tema5.pdf" target="_blank">http://mdgomez.webs.uvigo.es/DEI/Guias/tema5.pdf</a>
 
 
 Autor

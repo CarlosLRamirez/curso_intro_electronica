@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "Introducción a Arduino"
 date:   2019-11-25 12:02:22 -0600
@@ -6,7 +6,7 @@ permalink: /introduccion_arduino/
 categories: apuntes_curso
 ---
 
-## ¿Qué es Arduino?
+# ¿Qué es Arduino?
 
 * Plataforma open-source (codigo abierto) para la creación de proyectos electrónicos mediante hardware y software.
 * Tarjeta de Desarrollo basada en Microcontrolador.
@@ -53,13 +53,13 @@ La arduino Uno es una placa de desarrollo basada en un microcontrolador Atmega32
 
 ----
 
-## Conceptos básicos de electrónica 
+# Conceptos básicos de electrónica 
 
-### El circuito eléctrico
+## El circuito eléctrico
 
 ![](../images/Circuito%20Electrico.png)
 
-### Voltaje, Corriente y Resistencia
+## Voltaje, Corriente y Resistencia
     
 **Voltaje** se define como la cantidad de energía potencial entre dos puntos de un circuito. Uno punto tiene más carga que otro. La diferencia de carga entre los puntos se llama voltaje. El voltaje de mide en Voltios (V).
 
@@ -92,26 +92,27 @@ Una señal Analógica, puede tomar cualquier valor existente dentro de un rango 
 
 ## Codigo de colores de las Resistencias
 
-![](../images/codigo%20colores.png)
+![](../images/codigo%20col``ores.png)
 
-### Heramienta de simulacion de circuitos: TINKERCAD
+---
+
+# Introducción a Tinkercad
 
 Tinkercad [(www.tinkercad.com)](www.tinkercad.com) es una herramienta en linea que nos permite la simulación de circuitos mediante la conexión de componentes electronicos virtuales,como protoboard, resistencia, leds, pulsadores, etc.
 
 Tambien nos permite conectar y simular la programación de una placa Arduino UNO, como lo veremos mas adelante.
 
->Ejercicio:
->
->Crear un pequeño circuito eléctrico, utilizando un LED, una resistencia de 220 ohm, y un boton pulsador en serie, utilizaremos la placa de Arduino UNO unicamente como fuente de energía.
->
->Calcular la corriente que pasa por el circuito, y luego medirla con un amperimetro y comparar ambos valores.
->
->Simularlo en Tinkercad, y luego crearlo con componentes reales.
+> **ACTIVIDAD**:
+> 
+> Crear un pequeño circuito eléctrico, utilizando un LED, una resistencia de 220 ohm, y un boton pulsador en serie, utilizaremos la placa de Arduino UNO unicamente como fuente de energía.
+> 
+> Calcular la corriente que pasa por el circuito, y luego medirla con un amperimetro y comparar ambos valores.
+> 
+> Simularlo en Tinkercad, y luego crearlo con componentes reales.
+> 
 
-
-# Arduino: Salidas Digitales
-
-En esta sesión vamos a aprender a crear el circuito y programa básico de Arduino. El "Hola Mundo" de la electrónica, el cual consiste en encender y apagar un LED.
+---
+# Programación de Arduino
 
 ##  Preparación
 
@@ -120,12 +121,17 @@ En esta sesión vamos a aprender a crear el circuito y programa básico de Ardui
 * Instalar drivers (si fuera necesario)
 * Verificar la conexión de placa con el Arduino IDE
 
-## Simulación con Tinkercad
+## Uso de Salidas Digitales
 
-Antes de empezar a "meter mano" con nuestra placa de Arduino, vamos a simular nuestro primer "Hola Mundo" utilizando Tinkercad.
+En esta sesión vamos a aprender a crear el circuito y programa básico de Arduino. El "Hola Mundo" de la electrónica, el cual consiste en encender y apagar el LED integrado que trae la placa Arduino.
 
-### Programación por bloques
-Tinkercad nos permite simular la conexión del Arduino, y crear "programas" mediante la union bloques, como si estuviarmos jugando con Legos, lo cual es de mucha ayuda si usted no tiene experiencia en programación, ya que nos permite comprender de mejor manera la "logica" de un programa.
+### Conexión
+
+En este caso no necesitamos conexión ya que el LED que vamos a encender y apagar viene integrado en la placa Arduino, y conrresponde con el pin 13.
+
+### Simulación en  Tinkercad
+
+Tinkercad nos permite simular la conexión del Arduino, y crear "programas" mediante la union bloques, lo cual es de mucha ayuda si usted no tiene experiencia en programación, ya que nos permite comprender de mejor manera la "logica" de un programa.
 
 NOTA: *Se recomienda colocar el idioma en ingles, ya que las traducciones de los bloques suelen ser un poco confusas.*
 
@@ -133,7 +139,9 @@ Este es el "Hola Mundo" en bloques, para encender y apagar de forma intermitente
 
 ![bloques hola mundo led integrado](../images/hola-mundo-led-integrado.png)
 
-Tinkercad tambien nos muestra el equivalente en código Arduino, el cual podemos guardar y cargar en nuestra placa real.
+### Codigo
+
+Este sería el equivalente en código Arduino, el cual podemos guardar y cargar en nuestra placa real,
 
 ```cpp
 void setup()
@@ -150,9 +158,9 @@ void loop()
 }
 ```
 
+### Resultado
 
 Aqui vemos el led integrado parpadeando o "blinkeando"
-
 
 ![](../images/hola%20mundo%20led%20integrado.gif)
 
@@ -269,3 +277,47 @@ El modo de pin INPUT_PULLUP significa que el pin será utilizado como entrada, p
 Esta es la razón por la que los pulsadores estan conectados a GND. Cuando el pulsador es presionado, este conecta la entrada del pin a GND, por lo que cambia desde HIGH a LOW.
 
 Debido a que la entrada es normalmente HIGH, y unicamente se cambia a LOW cuando el boton esta presionado, la logica esta un poco alreves. Esto se maneja en la funcion "loop".
+
+
+> ### ACTIVIDAD 1:
+> 
+> Hacer un circuito que al presionar un boton, cambie el estado de un led, es decir, si el led esta encendido que lo apague, y si esta apagado que lo encienda:
+
+
+#### CODIGO SOLUCION
+
+```cpp
+boolean led_activo = false;
+
+void setup()
+{
+  pinMode(9, INPUT_PULLUP);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  digitalWrite (5, LOW);
+  led_activo=false;
+  
+  
+  
+}
+
+void loop()
+{
+  if (digitalRead(9) == LOW)
+  {
+    if (led_activo)
+    {
+      digitalWrite(5, LOW);
+      led_activo = false;
+   
+    }else
+    {
+      digitalWrite(5,HIGH);
+    	led_activo=true;
+
+  	}
+  }
+ 
+  delay(10);
+}
+```
