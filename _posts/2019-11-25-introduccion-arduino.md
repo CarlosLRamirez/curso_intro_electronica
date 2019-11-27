@@ -319,3 +319,73 @@ void loop() {
   delay(10);        // delay in between reads for stability
 }
 ```
+
+
+## Comunicacion Serial Con Arduino
+
+### Envio de Datos desde Arduino
+
+#### Ejercicio 1
+
+Realizar un programa que envíe el texto "Hola Mundo" cuando se presione un boton
+
+#### Ejercicio 2
+
+Realizar un programa que vaya incrementando un número hasta llegar a 10 y lo envie por el puerto serie, por ejemplo, la primera vez que presiones debe enviar uno 1, la segunda vez debe enviar un 2, y sucesivamente.
+
+#### Ejercicio 3
+
+Modificar el programa anterior, para que al llegar el contador a 10, envíe un mensaje y reinicie el contador a 0.
+
+### Recepcion de datos del Arduino
+
+#### Ejemplo 1
+
+Lectura de un caracter por el Arduino, lo desplegamos como **caracter** y como **entero**.
+
+Los datos que enviamos desde la PC hacia el Arduino se envían en codigo ASCII.
+
+```cpp
+void setup()
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  if (Serial.available())
+  {
+  	char data = Serial.read();
+    Serial.print("Tu me enviaste un caracter: ");
+    Serial.print(data);
+    Serial.print(" cuyo codigo ASCII es: ");
+    Serial.println((int)data);
+  }
+}
+```
+
+### Ejercicios
+
+Basado en el ejemplo, realize los siguientes ejercicios:
+
+Reto No. 1
+
+Hacer un programa que al recibir un caracter "a" encienda un LED, y al recibir una "b" apague el LED
+
+Reto No. 2
+
+Hacer un programa que haga parpadear un LED a 3 *velocidades* diferentes
+- Cuando reciba una "q", parpadea *despacio*.
+- Cuando reciba una "w", parpadea *medio*.
+- Cuando reciba una "e", parpadea *rapido*.
+EXTRA: cuando reciba una "x", que deje de parpadear.
+
+Reto No. 3
+
+Hacer un programa que al recibir un numero 1 al 9, lo multiplique por 100 y me devuelva el resultado. Si se recibe un caracter diferente, devuelva un mensaje de error.
+
+Reto No. 4
+
+Hacer un programa que al recibir un número del 1 al 7, calcule el FACTORIAL y devuelva el resultado, si se recibe un caracter diferente, devuelva un mensaje de error.
+EXTRA: modificar el programa para que pueda recibir del 1 al 9, calcular el factoria.
+
