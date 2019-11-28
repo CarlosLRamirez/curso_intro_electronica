@@ -604,6 +604,120 @@ void loop() {
 
 Enlace a la libreria <a href="https://www.arduino.cc/en/Reference/LiquidCrystal" target="_blank">LiquidCrystal.h</a>
 
+--- 
+# Arduino: Fotocelda
+
+Una fotocelda o fotoresistencia, como su nombre lo dice, varía su valor según la luz que recibe. El valor de resistencia es muy alto en la oscuridad y puede llegar hasta 150 Ω en plena luz.
+
+Para poder convertir este valor de resistencia variable de modo que podamos medirlo con Arduino, debemos convertirlo a un voltaje. Esto lo podemos hacer en combinación con una resistencia de valor fijo. 
+
+![](../images/fotocelda-arduino.png)
+
+La resistencia y la fotocelda en conjunto actúan como un potenciómetro. Cuando la luz es muy alta, la resistencia en la fotocelda es muy baja comparada con el valor de la resistencia fija, lo que es similar a que si un potenciómetro estuviera en su valor máximo.
+
+Cuando la fotocelda se encuentra en la oscuridad, la resistencia toma un valor alto comparado con la resistencia fija, lo que es similar a un potenciómetro girado a GND.
+
+## EJEMPLO
+
+### Conexion (Circuito)
+
+![](../images/Leccion6.Fotocelda.png)
+
+
+### Codigo
+
+```cpp
+void setup()
+{
+  pinMode(A0, INPUT);
+  Serial.begin(9600);
+
+}
+
+void loop()
+{
+  Serial.println(analogRead(A0));
+  delay(1000); // Wait for 1000 millisecond(s)
+}
+```
+
+> ### Reto No. 1
+> Cree un solución que active un LED cuando sea de noche, y lo apague cuando sea de día.
+
+> ### Reto No. 2
+> Crear un circuito que detecte tres niveles de luz (mañana, tarde y noche). Y cambie el color en un LED RGB de acuerdo a estos tres niveles.
+
+---
+
+# Arduino: Sensor Ultrasonico
+
+Vamos a ver el sensor de distancia de tipo ultrasónico, el cual se conoce como HC-SR04.
+
+![](../images/hc-sr04-diagram.png)
+
+El sensor HC-SR04 utiliza 4 pines:
+* VCC --> conectar 5VDC
+* GND --> conectar GND
+* TRIG --> conectar a una salida Digital
+* ECHO --> conectar a una entrada Digital
+
+Cuando el sensor recibe un pulso de 10 μs este realiza la medición de distancia y nos devuelve en el pin ECHO un pulso cuya duración es proporcional a la distancia medida.
+
+## Ejemplo 
+
+En este ejemplo vamos a aprender a utilizar librerías con Arduino.  Las librerías son muy útiles y nos permiten reutilizar codigo más complejo, lo cual nos facilita mucho el trabajo.  En este ejemplo vamos utilizar la librería **NewPing**, la cual se puede descargar [aqui](https://github.com/CarlosLRamirez/curso-intro-iot-arduino/blob/master/librerias/NewPing_v1.8.zip). 
+
+Para inicializar el sensor, utilizamos el método constructor, indicando la entrada donde está cableado el pin de disparo, así como el de respuesta. El parámetro `max_cm_distance` es opcional. 
+
+`NewPing sonar(trigger_pin, echo_pin [, max_cm_distance]);`
+
+Para obtener la lectura de distancia del sensor en cm, utilizamos el metodo `sonar.ping_cm()`.
+
+### Conexión
+
+![](../images/arduino-ultrasonico-circuito.png)
+
+### Codigo
+
+```cpp
+/*
+Codigo Ejemplo: Sensor Ultrasonica HC-SR04
+Uso de la libreria NewPing
+https://playground.arduino.cc/Code/NewPing/
+*/
+
+#include <NewPing.h>
+ 
+#define PIN_DISPARO  8
+#define PIN_RESPUESTA     9
+#define DISTANCIA_MAX 200
+ 
+NewPing sonar(PIN_DISPARO, PIN_RESPUESTA, DISTANCIA_MAX);
+ 
+void setup() {
+  Serial.begin(115200);
+}
+ 
+void loop() {
+  delay(50);
+  Serial.print("Ping: ");
+  Serial.print(sonar.ping_cm());
+  Serial.println("cm");
+}
+```
+> 
+> ## Reto No. 1
+> Cree una solución que si detecta un objeto a menos de 20cm, encienda un LED.
+
+
+> ## Reto No. 2
+> Cree una solución que si detecta que un objeto esta a menos de 50cm, y durante al menos un minuto, encienda un LED.
+>  
+> 
+> Y apague el LED, cuando ya no detecte el objeto por un minuto.
+
+> ## Reto No. 3
+> Cree una solución que pueda medir la longitud de los lados de una caja cuadrara y pueda calcular su área.
 
 
 
