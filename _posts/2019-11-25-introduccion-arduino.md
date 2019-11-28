@@ -261,13 +261,15 @@ void loop()
 }
 ```
 
+## Uso de Entradas Analógicas
+
+PENDIENTE ACTUALIZAR
+
+
 ## Uso de Salidas Analógicas
 
 PENDIENTE ACTUALIZAR
 
-## Uso de Entradas Analógicas
-
-PENDIENTE ACTUALIZAR
 
 
 ## Ejercicio indicador de volumen
@@ -325,7 +327,7 @@ void loop() {
 
 ### Envio de Datos desde Arduino
 
-#### Ejercicio 1
+#### Ejemplo 1: Envio de una cadena de texto
 
 Realizar un programa que envíe el texto "Hola Mundo" cuando se presione un boton
 
@@ -336,6 +338,8 @@ Realizar un programa que vaya incrementando un número hasta llegar a 10 y lo en
 #### Ejercicio 3
 
 Modificar el programa anterior, para que al llegar el contador a 10, envíe un mensaje y reinicie el contador a 0.
+
+---
 
 ### Recepcion de datos del Arduino
 
@@ -349,13 +353,14 @@ Los datos que enviamos desde la PC hacia el Arduino se envían en codigo ASCII.
 void setup()
 {
   Serial.begin(9600);
+  Serial.setTimeout(50);
 }
 
 void loop()
 {
   if (Serial.available())
   {
-  	char data = Serial.read();
+    char data = Serial.read();
     Serial.print("Tu me enviaste un caracter: ");
     Serial.print(data);
     Serial.print(" cuyo codigo ASCII es: ");
@@ -368,11 +373,11 @@ void loop()
 
 Basado en el ejemplo, realize los siguientes ejercicios:
 
-Reto No. 1
+#### Reto No. 1
 
 Hacer un programa que al recibir un caracter "a" encienda un LED, y al recibir una "b" apague el LED
 
-Reto No. 2
+#### Reto No. 2
 
 Hacer un programa que haga parpadear un LED a 3 *velocidades* diferentes
 - Cuando reciba una "q", parpadea *despacio*.
@@ -380,12 +385,233 @@ Hacer un programa que haga parpadear un LED a 3 *velocidades* diferentes
 - Cuando reciba una "e", parpadea *rapido*.
 EXTRA: cuando reciba una "x", que deje de parpadear.
 
-Reto No. 3
+#### Reto No. 3
 
 Hacer un programa que al recibir un numero 1 al 9, lo multiplique por 100 y me devuelva el resultado. Si se recibe un caracter diferente, devuelva un mensaje de error.
 
-Reto No. 4
+#### Reto No. 4
 
 Hacer un programa que al recibir un número del 1 al 7, calcule el FACTORIAL y devuelva el resultado, si se recibe un caracter diferente, devuelva un mensaje de error.
 EXTRA: modificar el programa para que pueda recibir del 1 al 9, calcular el factoria.
+ 
+**Codigo solucion del reto 4**
+
+
+```cpp
+//calculo de factorial utilizando funciones
+
+void setup()
+{
+  Serial.begin(9600);
+}
+
+//funcion que calcula el factorial de un caractar
+long calculo_factorial(char  c)
+{
+ int n = (int)c - 48;
+ long f = n ;
+ for (int i = 1; i <= (n-1); i++) {
+      f = f * i;
+ }
+ return f;
+}
+
+void loop()
+{
+  if (Serial.available())
+  {
+    char data = Serial.read();
+    Serial.print("Tu me enviaste un caracter: ");
+    Serial.print(data);
+    Serial.print(" cuyo codigo ASCII es: ");
+    Serial.println((int)data);
+         
+    Serial.print("El Factorial de ");
+    Serial.print((int)data - 48);
+    Serial.print(" es: ");
+    Serial.println(calculo_factorial(data)); 
+    
+    Serial.print("Y el factorial de ");
+    Serial.print(((int)data - 48)+1);
+    Serial.print(" es: ");
+    Serial.println(calculo_factorial(data+1)); 
+    Serial.println(data +1)
+    
+  }
+}
+```
+
+#### Reto No. 5
+
+Ejercicio
+Hacer un programa que reciba dos numeros y devuelva la suma, utilizando funciones, por ejemplo, debe de funcionar asi:
+
+```plaintext
+ingrese el primer numero:
+4
+ingrese el segundo numero:
+5
+la suma de 4 + 5 es:
+9
+```
+
+#### Ejemplo 2
+
+Recepción de un numero de varios digitos. En este ejemplo se utiliza la funcion `Serial.parseInt();` para leer un numero por el puerto serial, el cual puede ser tipo long, es decir hasta 2,147,483,647. 
+```cpp
+//EJEMPLO: RECIBIR UN NUMERO DE VARIOS DIGITOS
+
+void setup()
+{
+  Serial.begin(9600);
+ Serial.setTimeout(50);
+}
+
+void loop()
+{
+  if (Serial.available())
+  {
+    int data = Serial.parseInt();
+    Serial.print("El numero recibido es ");
+	Serial.println(data);
+    data = data + 1;
+    Serial.print("y es siguiente numero es ");
+	Serial.println(data);   
+  }
+}
+```
+--
+# Uso de Display LCD 16x2 con Arduino
+
+Para controlar una pantalla LCD Arduino, se debe utilizar la libreria llamada LiquidCrystal, la cual nos permite controlar los display LCD que son compatibls con el driver Hitachi HD44780. Generalmente estas traen una interfaz de 16 pines.
+
+En este sketch de ejemplo, se muestra como imprimir "Hola Mundo" en la LCD, y se muestra el tiempo en segundos desde que el Arduino fue reiniciado.
+
+![](../images/Arduino_lcd_example.png)v
+
+Las LCD tienen una interfaz paralela, lo que significa que el microcontrolador tiene que manipular varios pines de la interfaz al mismo tiempo para controlar el display. La interfaz consiste en los siguientes pines:
+
+
+**RegisteReSelect (RS):** este pin controla en que parte de la memoria de la LCD se escriben los datos. Se puede seleccionar ya sea los registros de datos, lo cual guarda lo que se muestra en la pantalla, o el registro de instrucciones, el cual guarda las instrucciones que debe realizar el controlador de la LCD.
+
+**Read/Write (R/W):** con este pin se selecciona el modo lectura o escritura.
+
+**Enable:** este pin habilita la escritura en los registros.
+
+**8 pines de datos (D0 -D7):** El estado de estos pines (alto o bajo) son los valores de los bits que se escriben en el registro al momento  de escribir, asi como los valores que se leen al momento de leer.
+
+Tambien hay un pin de **Contraste del display (Vo)**, pines de **alimentacion**, y pines **energia del LED de la luz de fondo**,pin para **controlar el contraste** del display, y para **encender o apagar el led** de fondo respectivamente.
+
+El proceso de controlar el display consiste en colcoar los datos que forman la imagen que queremos desplegar en los registros de datos, y luego poner las instrucciones en el registro de instrucciones. La libreria LiquiedCrystal simplifica este proceso, para no tener que conocer las instrucciones de bajo nivel. 
+
+Las LCD compatibles con el driver Hitachi pueden ser controladas en dos modos: 4-bits y 8-bits. El modo 4-bit requiere 7 pines E/S del Arduino, mientras el modo 8 bits requiere 11 pines. Para desplegar el texto en la pantalla, se puede hacer casi todo en el modo 4-bits, por lo que el ejemplo muestra como controlar una pantalla 16x2 en modo 4-bits.
+
+### Material requerido
+
+* Placa Arduino o Genuino
+* Pantalla LCD  (compatible con el drier Hitachi HD44780)
+* Potenciometro de 10k ohm
+* Resistencia de 220 ohm
+* Jumpers
+* Protoboard
+
+### Conexión del circuito
+
+La conexión de va de la siguiente manera:
+
+* pin RS de la LCD al pin digital 12 del Arduino
+* pin Enable de la LCD al pin digital 11 del Arduino
+* pin D4 de la LCD al pin digital 5 del Arduino
+* pin D5 de la LCD al pin digital 4 del Arduino
+* pin D6 de la LCD al pin digital 3 del Arduino
+* pin D7 de la LCD al pin digital 2 del Arduino
+
+Adicionalmente se debe cablear un potenciometro de 1Kohm a +5V y GND, y la salida de este al pin VO de la LCD (pin 3). 
+
+Conectar el LED de la luz de fondo (pin 15 y 16) con una resistencia de 220ohm para proteger el LED.
+
+![](../images/arduino_lcd16x2.png)
+
+### Esquematico
+
+![](../images/arduino-lcd-squematic.png)
+
+### Codigo
+
+```cpp
+/*
+  LiquidCrystal Library - Hello World
+
+ Demonstrates the use a 16x2 LCD display.  The LiquidCrystal
+ library works with all LCD displays that are compatible with the
+ Hitachi HD44780 driver. There are many of them out there, and you
+ can usually tell them by the 16-pin interface.
+
+ This sketch prints "Hello World!" to the LCD
+ and shows the time.
+
+  The circuit:
+ * LCD RS pin to digital pin 12
+ * LCD Enable pin to digital pin 11
+ * LCD D4 pin to digital pin 5
+ * LCD D5 pin to digital pin 4
+ * LCD D6 pin to digital pin 3
+ * LCD D7 pin to digital pin 2
+ * LCD R/W pin to ground
+ * LCD VSS pin to ground
+ * LCD VCC pin to 5V
+ * 10K resistor:
+ * ends to +5V and ground
+ * wiper to LCD VO pin (pin 3)
+
+ Library originally added 18 Apr 2008
+ by David A. Mellis
+ library modified 5 Jul 2009
+ by Limor Fried (http://www.ladyada.net)
+ example added 9 Jul 2009
+ by Tom Igoe
+ modified 22 Nov 2010
+ by Tom Igoe
+
+ This example code is in the public domain.
+
+ http://www.arduino.cc/en/Tutorial/LiquidCrystal
+ */
+
+// include the library code:
+#include <LiquidCrystal.h>
+
+// initialize the library with the numbers of the interface pins
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+void setup() {
+  // set up the LCD's number of columns and rows:
+  lcd.begin(16, 2);
+  // Print a message to the LCD.
+  lcd.print("hola, mundo!");
+}
+
+void loop() {
+  // set the cursor to column 0, line 1
+  // (note: line 1 is the second row, since counting begins with 0):
+  lcd.setCursor(0, 1);
+  // print the number of seconds since reset:
+  lcd.print(millis() / 1000);
+}
+```
+
+### Libreria
+
+Enlace a la libreria <a href="https://www.arduino.cc/en/Reference/LiquidCrystal" target="_blank">LiquidCrystal.h</a>
+
+
+
+
+
+
+
+
+
+
+
 
